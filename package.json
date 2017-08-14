@@ -1,0 +1,27 @@
+{
+  "name": "shortlink",
+  "version": "1.0.0",
+  "description": "Returns Shortened URLs",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Aimee-MacDonald/shortlink.git"
+  },
+  "keywords": [
+    "url",
+    "link",
+    "short",
+    "shortened",
+    "shortener",
+    "freecodecamp"
+  ],
+  "author": "Aimee MacDonald",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Aimee-MacDonald/shortlink/issues"
+  },
+  "homepage": "https://github.com/Aimee-MacDonald/shortlink#readme"
+}

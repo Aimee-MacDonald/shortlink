@@ -23,5 +23,8 @@
   "bugs": {
     "url": "https://github.com/Aimee-MacDonald/shortlink/issues"
   },
-  "homepage": "https://github.com/Aimee-MacDonald/shortlink#readme"
+  "homepage": "https://github.com/Aimee-MacDonald/shortlink#readme",
+  "dependencies": {
+    "express": "^4.15.4"
+  }
 }

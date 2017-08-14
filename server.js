@@ -24,13 +24,13 @@ app.get("/get-link/:longLink", function(req, res){
   collection.count({}, function(err, cnt){
     shortLink = "https://sl.glitch.me/" + (cnt+1).toString(36);
 
-    var respac = {
+    var dbpac = {
       longlink: longLink,
       shortlink: shortLink
     };
-
-    res.status(200).send(respac);
-    collection.insertOne(respac);
+    
+    collection.insertOne(dbpac);
+    res.status(200).send({link: shortLink});
   });
 });
 

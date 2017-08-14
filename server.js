@@ -50,7 +50,4 @@ app.get("/:shortLink", function(req, res){
     console.log(longlink);
     res.redirect("https://" + longlink);
   });
-  
-  
-  //res.redirect("https://google.com");
 });

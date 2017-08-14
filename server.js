@@ -39,5 +39,15 @@ app.get("/get-link/:longLink", function(req, res){
       https://sl.glitch.me/
 */
 app.get("/:shortLink", function(req, res){
-  res.redirect("https://google.com");
+  var collection = database.collection("links");
+  var shortLink = "https://sl.glitch.me/" + req.params.shortLink;
+  
+  collection.find({
+    shortlink: shortLink,
+  }).toArray(function(err, d){
+    if(err)throw err;
+    var longlink = d[0].longlink;
+    console.log(longlink);
+    res.redirect("https://" + longlink);
+  });
 });

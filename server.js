@@ -2,7 +2,7 @@ var express = require("express");
 var mongo = require("mongodb").MongoClient;
 var app = express();
 var portNumber = 8000;
-var dburl = "mongodb://localhost:27017/shortlinks";
+var dburl = "mongodb://admin:password@ds023593.mlab.com:23593/shortlink";
 
 app.use(express.static(__dirname + '/public'));
 

@@ -1,34 +1,24 @@
 var express = require("express");
+var mongo = require("mongodb").MongoClient;
 var app = express();
 var portNumber = 8000;
+var dburl = "mongodb://localhost:27017/shortlinks";
 
 app.use(express.static(__dirname + '/public'));
 
 app.get("/get-link/:longLink", function(req, res){
   var longLink = req.params.longLink;
 
-
-  var shortLink = 30;
-  shortLink++;
-  shortLink = shortLink.toString(36);
-  shortLink = "https://sl.glitch.me/" + shortLink;
-  /*
-      l = number of entries in db + 1
-      Convert l to base36
-      parseInt(string, radix)
-      NumberObject.toString(radix)
-  */
-
-  /*
-      Generate Short link
-        Count the number of Links in the Database
-        Convert the number to base36
-        Create the link
-          https://sl.glitch.me/<base36 number>
-      Store Both Links
-      Return Short Link
-  */
-  res.status(200).send({link: shortLink});
+  mongo.connect(dburl, function(err, db){
+    if(err)throw err;
+    db.collection("links").count({}, function(err, cnt){
+      if(err)throw err;
+      shortLink = "https://sl.glitch.me/" + (cnt+1).toString(36);
+      res.status(200).send({link: shortLink});
+      storeLink(longLink, shortLink);
+    });
+    db.close();
+  });
 });
 
 /*
@@ -38,6 +28,14 @@ app.get("/get-link/:longLink", function(req, res){
 app.get("/:shortLink", function(req, res){
   res.redirect("https://google.com");
 });
+
+function storeLink(ll, sl){
+  var l = {
+    longlink: ll,
+    shortlink: sl
+  }
+  console.log(l);
+}
 
 app.listen(portNumber, function(){
   console.log("Server Started Listening on Port: " + portNumber);

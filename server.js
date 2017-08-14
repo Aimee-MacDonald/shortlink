@@ -7,6 +7,18 @@ app.use(express.static(__dirname + '/public'));
 app.get("/get-link/:longLink", function(req, res){
   var longLink = req.params.longLink;
 
+
+  var shortLink = 30;
+  shortLink++;
+  shortLink = shortLink.toString(36);
+  shortLink = "https://sl.glitch.me/" + shortLink;
+  /*
+      l = number of entries in db + 1
+      Convert l to base36
+      parseInt(string, radix)
+      NumberObject.toString(radix)
+  */
+
   /*
       Generate Short link
         Count the number of Links in the Database
@@ -16,7 +28,7 @@ app.get("/get-link/:longLink", function(req, res){
       Store Both Links
       Return Short Link
   */
-  res.status(200).send({link: "sl.glitch.me/H77J"});
+  res.status(200).send({link: shortLink});
 });
 
 /*

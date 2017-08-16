@@ -64,9 +64,10 @@
           background-color: transparent
           border-top-color: transparent
           border-bottom-color: transparent
+          border-radius: 50%
           margin-left: 5px
-          transform: rotateZ(90deg)
-          animation: spinning 2.5s cubic-bezier(0.24,-0.49, 0.77, 1.43) infinite
+          animation: spinning 2s cubic-bezier(0.71,-0.76, 0.01, 1.47) infinite
+          box-shadow: 0px 0px 0px 4px black
   #apibtn
     background-color: #FF7C2A
     color: black
@@ -118,6 +119,8 @@
 
 @keyframes spinning
   0%
-    transform: rotateZ(90deg)
+    transform: rotateZ(0deg)
+  40%
+    transform: rotateZ(0deg)
   100%
-    transform: rotateZ(810deg)
+    transform: rotateZ(720deg)

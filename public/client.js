@@ -38,7 +38,6 @@ function toggleAPI(){
 
 function createLink(){
   var longlink = el_textbox.value;
-  var validLink = false;
 
   if(longlink.slice(0, 7) === "http://")longlink = longlink.slice(7, longlink.length);
   if(longlink.slice(0, 8) === "https://")longlink = longlink.slice(8, longlink.length);
@@ -46,22 +45,19 @@ function createLink(){
   el_arrow.className = "spinner";
 
   // Sending the Request
-  if(validLink){
-    longlink = longlink.join(".");
-    var request = new XMLHttpRequest();
-    request.open("GET", "https://sl.glitch.me/get-link/" + longlink);
+  var request = new XMLHttpRequest();
+  request.open("GET", "https://sl.glitch.me/get-link/" + longlink);
 
-    request.onload = function(){
-      var data = JSON.parse(request.responseText);
-      console.log(data);
-      el_arrow.className = "arrow";
-    };
+  request.onload = function(){
+    var data = JSON.parse(request.responseText);
+    el_textbox.value = data.link;
+    el_arrow.className = "arrow";
+  };
 
-    request.onerror = function(){
-      console.log("Oups!");
-      el_arrow.className = "arrow";
-    };
+  request.onerror = function(){
+    console.log("Oups!");
+    el_arrow.className = "arrow";
+  };
 
-    request.send();
-  }
+  request.send();
 }

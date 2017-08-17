@@ -98,6 +98,11 @@
   border: 5px solid black;
 }
 
+#container #apibtn:hover {
+  background-color: #316DCB;
+  cursor: pointer;
+}
+
 #container #apibtn p {
   text-align: center;
   padding-top: 30px;
@@ -172,7 +177,7 @@
       border-radius: 10px;
     }
     #container #apibtn {
-      grid-column: 10 / 12;
+      grid-column: 10 / 11;
       grid-row: 1 / 1;
     }
     #container #apibox {
@@ -183,6 +188,10 @@
     #container #aimeelogo {
       grid-column: 5 / 7;
       grid-row: 6 / 6;
+      margin-left: 100px;
+      width: 50%;
+    }
+    #container #aimeelogo img {
       width: 100%;
     }
   }

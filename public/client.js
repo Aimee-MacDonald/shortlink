@@ -43,11 +43,8 @@ function createLink(){
   if(longlink.slice(0, 7) === "http://")longlink = longlink.slice(7, longlink.length);
   if(longlink.slice(0, 8) === "https://")longlink = longlink.slice(8, longlink.length);
 
-  longlink = longlink.split(".");
-
-  if(longlink.length == 2 || (longlink.length == 3 && longlink[0] == "www"))validLink = true;
-
   el_arrow.className = "spinner";
+
   // Sending the Request
   if(validLink){
     longlink = longlink.join(".");

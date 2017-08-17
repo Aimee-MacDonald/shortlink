@@ -38,105 +38,33 @@ function toggleAPI(){
 
 function createLink(){
   var longlink = el_textbox.value;
-  var validLink = true;
+  var validLink = false;
+
+  if(longlink.slice(0, 7) === "http://")longlink = longlink.slice(7, longlink.length);
+  if(longlink.slice(0, 8) === "https://")longlink = longlink.slice(8, longlink.length);
+
+  longlink = longlink.split(".");
+
+  if(longlink.length == 2 || (longlink.length == 3 && longlink[0] == "www"))validLink = true;
 
   el_arrow.className = "spinner";
+  // Sending the Request
+  if(validLink){
+    longlink = longlink.join(".");
+    var request = new XMLHttpRequest();
+    request.open("GET", "https://sl.glitch.me/get-link/" + longlink);
 
-  /*
-    TODO:
-      Validate the link!!
-  */
+    request.onload = function(){
+      var data = JSON.parse(request.responseText);
+      console.log(data);
+      el_arrow.className = "arrow";
+    };
 
-  var request = new XMLHttpRequest();
-  request.open("GET", "http://sl.glitch.me/get-link/" + longlink);
+    request.onerror = function(){
+      console.log("Oups!");
+      el_arrow.className = "arrow";
+    };
 
-  request.onload = function(){
-    var data = JSON.parse(request.responseText);
-    console.log(data);
-  };
-
-  request.onerror = function(){
-    console.log("Oups!");
+    request.send();
   }
-
-  request.send();
 }
-
-
-
-/*
-var request = new XMLHttpRequest();
-request.open('GET', '/my/url', true);
-
-request.onload = function() {
-  if (request.status >= 200 && request.status < 400) {
-    // Success!
-    var data = JSON.parse(request.responseText);
-  } else {
-    // We reached our target server, but it returned an error
-
-  }
-};
-
-request.onerror = function() {
-  // There was a connection error of some sort
-};
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-function shorten(url){
-
-var request = new XMLHttpRequest();
-bitly="http://api.bitly.com/v3/shorten?&apiKey=mykey&login=mylogin&longURL=";
-request.open('GET', bitly+url, true);
-
-request.onload = function() {
-  if (request.status >= 200 && request.status < 400) {
-  var data = JSON.parse(request.responseText).data.url;
-  alert ("1:"+data); //alerts fine from within
-  // return data is helpless
-  }
-};
-
-request.onerror = function() {
-   // There was a connection error of some sort
-   return url;
-};
-
-request.send();
-
-}
-*/

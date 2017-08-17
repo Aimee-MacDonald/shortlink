@@ -192,8 +192,8 @@
   0% {
     transform: rotateZ(0deg);
   }
-  40% {
-    transform: rotateZ(0deg);
+  60% {
+    transform: rotateZ(720deg);
   }
   100% {
     transform: rotateZ(720deg);

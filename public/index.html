@@ -12,17 +12,17 @@
 <div id="container">
   <div id="header"><img src="sllogo.svg" alt="Shortlink Logo"></div>
   <div id="urlbox">
-    <div id="urlwidget">
+    <form id="urlwidget">
       <div id="https"><p>https://</p></div>
-      <input type="text" name="textbox" id="textbox" value="Shorten any Link!">
-      <div id="gobutton"><div id="arrow" class="arrow"></div></div>
-    </div>
+      <input type="text" name="longlink" id="textbox" value="Shorten any Link!">
+      <button id="gobutton" type="submit" value="Submit"><div id="arrow" class="arrow"></div></button>
+    </form>
   </div>
   <div id="apibox">
     <p id="apip1">This API will Shorten any URL you pass to it</p> <br>
     <p id="apip2">Example:</p> <br>
-    <p id="apip3">https://sl.glitch.me/get-link/longlink</p> <br>
-    <p id="apip4">Replace <em>longlink</em> with the URL you want to get Shortened</p> <br>
+    <p id="apip3">https://sl.glitch.me/get-link?longlink=yourlink</p> <br>
+    <p id="apip4">Replace <em>yourlink</em> with the URL you want to get Shortened</p> <br>
     <p id="apip5">Returned JSON:</p> <br>
     <p id="apip6">{link: "https://sl.glitch.me/a}</p>
   </div>
